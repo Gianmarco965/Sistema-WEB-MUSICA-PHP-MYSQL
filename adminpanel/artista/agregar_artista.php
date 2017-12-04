@@ -1,13 +1,13 @@
 <?php 
 
-require_once('../../session.php');
-$nombre = $_REQUEST['txtnombre'];
-$apellido = $_REQUEST['txtapellido'];
-$nacionalidad =$_REQUEST['txtnacionalidad'];
-$fecha = $_REQUEST['txtfecha'];
-$foto = $_REQUEST['txtfoto'];
+require_once("../../session.php");
+$nombre = $_REQUEST["txtnombre"];
+$apellido = $_REQUEST["txtapellido"];
+$nacionalidad =$_REQUEST["txtnacionalidad"];
+$fecha = $_REQUEST["txtfecha"];
+$foto = $_REQUEST["txtfoto"];
 $rut="img/";
-$foto2 =$rut.$foto;
+$foto2 =$rut.''. basename($_FILES['txtfoto']['name']);
 $dir_subida = '../../img/';
 $fichero_subido = $dir_subida . basename($_FILES['txtfoto']['name']);
 

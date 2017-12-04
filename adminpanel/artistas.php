@@ -60,7 +60,7 @@
                                         {
                                            echo "<div class='font-icon-list col-lg-3 col-md-3 col-sm-4 col-xs-6 col-xs-6'>";
                                             echo "<div class='font-icon-detail'>";
-                                            echo "<img src=http://localhost/".$rows[5]." width='150px'>";
+                                            echo "<img src=http://localhost/".$rows[5]." width='150px' height='140px' >";
                                             
                                             echo "<input type='text' value=".$rows[1].$rows[2].">";
                                             echo "<input type='text' value='Nacionalidad: ".$rows[3]."'>";
