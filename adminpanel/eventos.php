@@ -38,7 +38,9 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                               <button type="submit" class="btn btn-info btn-fill pull-right">Agregar EVENTOS <i class="pe-7s-folder"></i></button>
+                              <form action="agregar_evento.php">
+                                   <button type="submit" class="btn btn-info btn-fill pull-right">Agregar EVENTOS <i class="pe-7s-folder"></i></button>
+                                </form>
                                 <h4 class="title">EVENTOS</h4>
                                 <p class="category">Aqui se muestran los EVENTOS que existen en el sistema</p>
                             </div>
