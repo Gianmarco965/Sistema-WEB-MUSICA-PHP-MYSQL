@@ -32,13 +32,21 @@
                 </li>
                 <li>
                     <a href="albums.php">
-                        <i class="pe-7s-note2"></i>
+                        <i class="pe-7s-album"></i>
                         <p>ALBUMS</p>
                     </a>
                 </li>
+                 <li>
+                    <a href="canciones.php">
+                        <i class="pe-7s-volume"></i>
+                        <p>CANCIONES</p>
+                    </a>
+                </li>
+                
+                
                 <li>
                     <a href="artistas.php">
-                        <i class="pe-7s-news-paper"></i>
+                        <i class="pe-7s-star"></i>
                         <p>ARTISTAS</p>
                     </a>
                 </li>

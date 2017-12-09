@@ -64,7 +64,7 @@
                                             echo "<input type='text' value='Año: ".$rows[2]."'>";
                                              echo "<input type='text' value='Precio S/. ".$rows[3]."'>";
                                             echo "<input type='text' value='Artista: ".$rows[5]."'>";
-                                            echo "<button type='submit' class='btn help-block btn-fill'>VER CANCIONES </button>
+                                            echo "<a href='ver_album.php?idalbum=".$rows[0]."' class='btn help-block btn-fill'>VER ALBUM</a>
                                             <button type='button' class='btn help-block'>QUITAR</button>
                                             ";
                                             echo " </div>";

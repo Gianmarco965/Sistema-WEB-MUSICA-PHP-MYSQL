@@ -66,7 +66,7 @@
                                             echo "<input type='text' value='Nacionalidad: ".$rows[3]."'>";
                                              echo "<input type='text' value='FechaNac: ".$rows[4]."'>";
                                            
-                                            echo "<button type='submit' class='btn help-block btn-fill'>VER ARTISTA </button>
+                                            echo "<a href='ver_artista.php?idartista=".$rows[0]."' class='btn help-block btn-fill' >VER ARTISTA</a>
                                             <button type='button' class='btn help-block'>QUITAR</button>";
                                             echo " </div>";
                                             

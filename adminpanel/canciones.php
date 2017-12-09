@@ -38,14 +38,14 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                              <form action="agregar_evento.php">
-                                   <button type="submit" class="btn btn-info btn-fill pull-right">Agregar EVENTOS <i class="pe-7s-folder"></i></button>
+                              <form action="agregar_cancion.php">
+                                   <button type="submit" class="btn btn-info btn-fill pull-right">Agregar CANCIONES <i class="pe-7s-folder"></i></button>
                                 </form>
-                                <h4 class="title">EVENTOS</h4>
-                                <p class="category">Aqui se muestran los EVENTOS que existen en el sistema</p>
+                                <h4 class="title">CANCIONES</h4>
+                                <p class="category">Aqui se muestran las CANCIONES que existen en el sistema</p>
                             </div>
                               <?php 
-        $sql = "SELECT e.idevento,e.nomevento,e.fechaevento,IF(e.estadoevento=1,'ACTIVO','INACTIVO') as estado,e.portada,a.nombreartista from evento e inner join artista a on a.idartista=e.idartista"; //get article id too
+        $sql = "SELECT c.idcancion,a.nombrealbum,c.nombre,c.genero,c.portada from cancion c inner join album a on a.idalbum=c.idalbum"; //get article id too
         $results = $db->query($sql); //it makes the query
      ?>
                             <div class="content table-responsive table-full-width">
@@ -60,11 +60,10 @@
                                             echo "<div class='font-icon-detail'>";
                                             echo "<img src=http://localhost/".$rows[4]." width='150px'>";
                                             
-                                            echo "<input type='text' value=".$rows[1].">";
-                                            echo "<input type='text' value='Fecha: ".$rows[2]."'>";
-                                             echo "<input type='text' value='Estado: ".$rows[3]."'>";
-                                            echo "<input type='text' value='Artista: ".$rows[5]."'>";
-                                            echo "<a href='ver_evento.php?idevento=".$rows[0]."' class='btn help-block btn-fill'>VER EVENTO </a>
+                                            echo "<input type='text' value=".$rows[2].">";
+                                            echo "<input type='text' value='Genero: ".$rows[3]."'>";
+                                             echo "<input type='text' value='Album: ".$rows[1]."'>";
+                                            echo "<a href='ver_cancion.php?idcancion=".$rows[0]."' class='btn help-block btn-fill'>VER CANCION </a>
                                             <button type='button' class='btn help-block'>QUITAR</button>";
                                             echo " </div>";
                                             
