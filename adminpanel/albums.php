@@ -38,7 +38,9 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="header">
-                               <button type="submit" class="btn btn-info btn-fill pull-right">Agregar Album <i class="pe-7s-folder"></i></button>
+                              <form action="agregar_album.php">
+                                   <button type="submit" class="btn btn-info btn-fill pull-right">Agregar Album <i class="pe-7s-folder"></i></button>
+                               </form>
                                 <h4 class="title">ALBUMS</h4>
                                 <p class="category">Aqui se muestran los albums que existen en el sistema</p>
                             </div>
@@ -62,7 +64,9 @@
                                             echo "<input type='text' value='Año: ".$rows[2]."'>";
                                              echo "<input type='text' value='Precio S/. ".$rows[3]."'>";
                                             echo "<input type='text' value='Artista: ".$rows[5]."'>";
-                                            echo "<button type='submit' class='btn help-block btn-fill'>VER CANCIONES </button>";
+                                            echo "<button type='submit' class='btn help-block btn-fill'>VER CANCIONES </button>
+                                            <button type='button' class='btn help-block'>QUITAR</button>
+                                            ";
                                             echo " </div>";
                                             
                                             echo "</div>";

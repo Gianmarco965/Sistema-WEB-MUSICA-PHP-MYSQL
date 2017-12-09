@@ -64,7 +64,8 @@
                                             echo "<input type='text' value='Fecha: ".$rows[2]."'>";
                                              echo "<input type='text' value='Estado: ".$rows[3]."'>";
                                             echo "<input type='text' value='Artista: ".$rows[5]."'>";
-                                            echo "<button type='submit' class='btn help-block btn-fill'>VER EVENTO </button>";
+                                            echo "<button type='submit' class='btn help-block btn-fill'>VER EVENTO </button>
+                                            <button type='button' class='btn help-block'>QUITAR</button>";
                                             echo " </div>";
                                             
                                             echo "</div>";
