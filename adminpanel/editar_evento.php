@@ -33,79 +33,100 @@
         ?>
 <div class="content">
             <div class="container-fluid">
+                <?php
+                            $idevento=$_REQUEST["idevento"];
+                            $micadena="select *from evento where idevento=".$idevento;
+                            $results = $db->query($micadena);
+                            $rows1=$results->fetch_row()
+                ?>
+                                                
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">EVENTO</h4>
+                                <h4 class="title">EDITAR EVENTO</h4>
                             </div>
                             <div class="content">
-                                <form method="POST" enctype="multipart/form-data"  action="artista/agregar_artista.php">
-                                   <?php 
-                                    $idevento=$_REQUEST["idevento"];
-        $sql = "SELECT e.idevento,e.nomevento,e.fechaevento,IF(e.estadoevento=1,'ACTIVO','INACTIVO') as 'estado',e.portada,CONCAT(a.nombreartista,' ',a.apellidoartista) as 'artista' from evento e inner join artista a on a.idartista=e.idartista where e.idevento=".$idevento; //get article id too
-        $results = $db->query($sql);
-                                    $rows=$results->fetch_row()
-                                    
-                                    //it makes the query
-     ?>
+                                <form method="POST" enctype="multipart/form-data"  action="evento/actualizar_evento.php">
                                     <div class="row">
-                                        <div class="col-md-6">
+                                        <div class="col-md-8">
                                             <div class="form-group">
-                                                <label>Nombres</label>
-                                          <?php  echo "<label class='form-control'>".$rows[1]."</label>"
-                                        ?>
-                                               
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Fecha</label>
-                                                 <?php  echo "<label class='form-control'>".$rows[2]."</label>"
-                                        ?>
+                                                <label>Nombre</label>
+                                                <input type="text" class="form-control" name="txtnombre" placeholder="Escriba el nombre del evento" value="<?php echo $rows1[1] ?>" required>
                                             </div>
                                         </div>
                                        
                                     </div>
 
-                                   
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Fecha</label>
+                                                <input type="date"  name="txtfecha" class="form-control" placeholder="Escriba la Fecha de Evento" value="<?php echo $rows1[2] ?>" required>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="row">
                                        
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Estado</label>
-                                                <?php  echo "<label class='form-control'>".$rows[3]."</label>"
-                                        ?>
+                                                <select class="form-control" name="cboestado" id="">
+                                                   <?php if ($rows1[3]==0)
+                                                        {
+                                                            echo "<option selected value='0'>INACTIVO</option>";
+                                                             echo "<option value='1'>ACTIVO</option>";
+                                                        }
+                                                        else
+                                                        {
+                                                            echo "<option value='0'>INACTIVO</option>";
+                                                             echo "<option selected value='1'>ACTIVO</option>";  
+                                                        }
+                                                    ?>
+                                                  
+                                                </select>
+                                              
                                             </div>
                                         </div>
-                                        
-                                    </div>
-                                      <div class="row">
-                                       
-                                        <div class="col-md-4">
+                                          <div class="col-md-4">
                                             <div class="form-group">
+                                               <?php
+                                                $micadena="select *from artista";
+                                                $results = $db->query($micadena);
+                                                ?>
                                                 <label>Artista</label>
-                                                <?php  echo "<label class='form-control'>".$rows[5]."</label>"
+                                                <select class="form-control" name="cboartista" id="">
+                                                <?php
+                                                    $seleccionado="";
+                                        while($rows=$results->fetch_row())
+                                        {
+                                            if ($rows[0]==$rows1[5])
+                                            {
+                                                $seleccionado="selected";
+                                            }
+                                            echo  "<option ".$seleccionado." value='".$rows[0]."'>".$rows[1].' '.$rows[2]."</option>";
+                                            $seleccionado="";
+                                                }
+                                                    
                                         ?>
+                                                </select>
                                             </div>
                                         </div>
                                         
                                     </div>
-                                    
                                     <div class="row">
                                        
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Foto</label>
-                                            <?php  echo "<img  height='250px' src='http://localhost/".$rows[4]."'/>"
-                                        ?>
+                                                <input type="file"  name="txtfoto" class="form-control" accept="image/*" required >
                                             </div>
                                         </div>
                                         
                                     </div>
                        
-                                    <a href="editar_evento.php?idevento=<?php echo $idevento?>" class="btn btn-info btn-fill pull-right">EDITAR EVENTO</a>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">GUARDAR EVENTO</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -136,6 +157,8 @@
                 </div>
             </div>
         </div>
+
+        
         <?php
    include('footer.php');
 ?>

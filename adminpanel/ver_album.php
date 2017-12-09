@@ -112,7 +112,7 @@
                                     </div>
                        
                                     <a class="btn btn-info btn-fill pull-right">EDITAR ALBUM</a>
-                                     <a class="btn btn-fill">VER CANCIONES</a>
+                                     <a href="cancion_album.php?idalbum=<?php echo $idalbum ?>" class="btn btn-fill">VER CANCIONES</a>
                                     <div class="clearfix"></div>
                                 </form>
                               
