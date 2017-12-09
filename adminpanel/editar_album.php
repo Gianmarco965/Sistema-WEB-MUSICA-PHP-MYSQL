@@ -33,89 +33,101 @@
         ?>
 <div class="content">
             <div class="container-fluid">
-                <?php
-                            $idevento=$_REQUEST["idevento"];
-                            $micadena="select *from evento where idevento=".$idevento;
+               <?php
+                            $idalbum=$_REQUEST["idalbum"];
+                            $micadena="select *from album where idalbum=".$idalbum;
                             $results = $db->query($micadena);
                             $rows1=$results->fetch_row()
                 ?>
-                                                
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">EDITAR EVENTO</h4>
+                                <h4 class="title">EDITAR ALBUM</h4>
                             </div>
                             <div class="content">
-                                <form method="POST" enctype="multipart/form-data"  action="evento/actualizar_evento.php">
-                                    <div class="row">
-                                        <div class="col-md-8">
-                                            <div class="form-group">
-                                                <label>Nombre</label>
-                                                <input type="text" class="form-control" name="txtnombre" placeholder="Escriba el nombre del evento" value="<?php echo $rows1[1] ?>" required>
-                                                <input type="hidden" value="<?php echo $idevento ?>" name="idevento" >
-                                            </div>
-                                        </div>
-                                       
-                                    </div>
-
+                                <form method="POST" enctype="multipart/form-data"  action="album/actualizar_album.php">
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Fecha</label>
-                                                <input type="date"  name="txtfecha" class="form-control" placeholder="Escriba la Fecha de Evento" value="<?php echo $rows1[2] ?>" required>
+                                                <label>Nombres</label>
+                                                <input type="text" class="form-control" name="txtnombre"  maxlength="100" placeholder="Escriba el nombre del album" value="<?php echo $rows1[1] ?>" required>
+                                                <input type="hidden" name="idalbum" class="form-control" value="<?php echo $rows1[0] ?>">
                                             </div>
                                         </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Año</label>
+                                                <input type="text" name="txtanio" class="form-control"  maxlength="4" placeholder="Escriba el año del album" value="<?php echo $rows1[2] ?>" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Valor</label>
+                                                <input type="text"  name="txtvalor" class="form-control" maxlength="4" placeholder="Escriba el valor del album" value="<?php echo $rows1[3] ?>" required>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
 
                                     <div class="row">
-                                       
-                                        <div class="col-md-4">
+                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label>Estado</label>
-                                                <select class="form-control" name="cboestado" id="">
-                                                   <?php if ($rows1[3]==0)
-                                                        {
-                                                            echo "<option selected value='0'>INACTIVO</option>";
-                                                             echo "<option value='1'>ACTIVO</option>";
-                                                        }
-                                                        else
-                                                        {
-                                                            echo "<option value='0'>INACTIVO</option>";
-                                                             echo "<option selected value='1'>ACTIVO</option>";  
-                                                        }
-                                                    ?>
-                                                  
+                                               <?php
+                                                $micadena="select *from disquera";
+                                                $results = $db->query($micadena);
+                                                $seleccionado="";
+                                                ?>
+                                                <label>Disquera</label>
+                                                <select class="form-control" name="cbodisquera" id="" required>
+                                                     <?php
+                                                   $seleccionado=""; 
+                                        while($rows=$results->fetch_row())
+                                        {
+                                            if ($rows[0]==$rows1[4])
+                                                    {
+                                                        $seleccionado="selected";    
+                                                    }
+                                            
+                                            echo  "<option ".$seleccionado." value='".$rows[0]."'>".$rows[1]."</option>";
+                                            
+                                            $seleccionado="";
+                                                }
+                                                    
+                                        ?>
                                                 </select>
-                                              
+                                               
                                             </div>
                                         </div>
-                                          <div class="col-md-4">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                <?php
                                                 $micadena="select *from artista";
                                                 $results = $db->query($micadena);
                                                 ?>
                                                 <label>Artista</label>
-                                                <select class="form-control" name="cboartista" id="">
-                                                <?php
+                                                <select class="form-control" name="cboartista" id="" required>
+                                                   <?php
                                                     $seleccionado="";
                                         while($rows=$results->fetch_row())
                                         {
-                                            if ($rows[0]==$rows1[5])
-                                            {
-                                                $seleccionado="selected";
-                                            }
-                                            echo  "<option ".$seleccionado." value='".$rows[0]."'>".$rows[1].' '.$rows[2]."</option>";
-                                            $seleccionado="";
+                                              if ($rows[0]==$rows1[5])
+                                                    {
+                                                        $seleccionado="selected";    
+                                                    }
+                                            echo  "<option ".$seleccionado."  value='".$rows[0]."'>".$rows[1].' '.$rows[2]."</option>";
+                                             $seleccionado="";
                                                 }
-                                                    
                                         ?>
                                                 </select>
+                                               
                                             </div>
                                         </div>
                                         
+                                        
                                     </div>
+
+                                 
                                     <div class="row">
                                        
                                         <div class="col-md-4">
@@ -127,7 +139,7 @@
                                         
                                     </div>
                        
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">GUARDAR EVENTO</button>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">GUARDAR ALBUM</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>

@@ -33,50 +33,51 @@
         ?>
 <div class="content">
             <div class="container-fluid">
+                <?php
+                            $idartista=$_REQUEST["idartista"];
+                            $micadena="select *from artista where idartista=".$idartista;
+                            $results = $db->query($micadena);
+                            $rows1=$results->fetch_row()
+                ?>
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card">
                             <div class="header">
-                                <h4 class="title">ARTISTA</h4>
+                                <h4 class="title">EDITAR ARTISTA</h4>
                             </div>
                             <div class="content">
-                                <form method="POST" enctype="multipart/form-data"  action="artista/agregar_artista.php">
-                                   <?php 
-                                    $idartista=$_REQUEST["idartista"];
-        $sql = "SELECT *from artista where idartista=".$idartista; //get article id too
-        $results = $db->query($sql);
-                                    $rows=$results->fetch_row()
-                                    
-                                    //it makes the query
-     ?>
+                                <form method="POST" enctype="multipart/form-data"  action="artista/actualizar_artista.php">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Nombres</label>
-                                          <?php  echo "<label class='form-control'>".$rows[1].' '.$rows[2]."</label>"
-                                        ?>
-                                               
+                                                <input type="text" class="form-control" name="txtnombre" placeholder="Escriba los nombres del artista" value="<?php echo $rows1[1] ?>" required>
+                                                <input type="hidden" class="form-control" name="idartista" value="<?php echo $idartista ?>" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Nacionalidad</label>
-                                                 <?php  echo "<label class='form-control'>".$rows[3]."</label>"
-                                        ?>
+                                                <label>Apellidos</label>
+                                                <input type="text" name="txtapellido" class="form-control" placeholder="Escriba los apellidos del artista" value="<?php echo $rows1[2] ?>" required>
                                             </div>
                                         </div>
-                                       
                                     </div>
 
-                                   
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Nacionalidad</label>
+                                                <input type="text"  name="txtnacionalidad" class="form-control" placeholder="Escriba la nacionalidad del artista" value="<?php echo $rows1[3]?>" required>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <div class="row">
                                        
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Fecha de Nacimiento</label>
-                                                <?php  echo "<label class='form-control'>".$rows[4]."</label>"
-                                        ?>
+                                                <input type="date"  name="txtfecha" class="form-control" placeholder="Country" value="<?php echo $rows1[4] ?>" required>
                                             </div>
                                         </div>
                                         
@@ -86,14 +87,13 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Foto</label>
-                                            <?php  echo "<img  height='250px' src='http://localhost/".$rows[5]."'/>"
-                                        ?>
+                                                <input type="file"  name="txtfoto" class="form-control" accept="image/*" required >
                                             </div>
                                         </div>
                                         
                                     </div>
                        
-                                    <a href="editar_artista.php?idartista=<?php echo $rows[0] ?>" class="btn btn-info btn-fill pull-right">EDITAR ARTISTA</a>
+                                    <button type="submit" class="btn btn-info btn-fill pull-right">GUARDAR ARTISTA</button>
                                     <div class="clearfix"></div>
                                 </form>
                             </div>
@@ -124,6 +124,8 @@
                 </div>
             </div>
         </div>
+
+        
         <?php
    include('footer.php');
 ?>

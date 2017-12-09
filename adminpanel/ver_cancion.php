@@ -40,7 +40,7 @@
                                     $idcancion=$_REQUEST["idcancion"];
         $sql = "select c.idcancion,a.nombrealbum,c.nombre,c.genero,c.portada from cancion c inner join album a on a.idalbum=c.idalbum where c.idcancion=".$idcancion; //get article id too
         $results = $db->query($sql);
-                                    $rows=$results->fetch_row()                                 
+                                    $rows=$results->fetch_row();                                 
                                         //it makes the query
      ?>
                             <div class="header">
@@ -92,7 +92,7 @@
                                         
                                     </div>
                        
-                                    <a class="btn btn-info btn-fill pull-right">EDITAR CANCION</a>
+                                    <a href="editar_cancion.php?idcancion=<?php echo $idcancion ?>" class="btn btn-info btn-fill pull-right">EDITAR CANCION</a>
 
                                     <div class="clearfix"></div>
                                 </form>
