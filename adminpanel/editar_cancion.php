@@ -47,7 +47,7 @@
                                 <h4 class="title">EDITAR CANCION</h4>
                             </div>
                             <div class="content">
-                                <form method="POST" enctype="multipart/form-data"  action="cancion/actualizar_cancion.php">
+                                <form method="POST" enctype='multipart/form-data'   action="cancion/actualizar_cancion.php">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -90,6 +90,27 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    
+                                     <div class="row">
+                                       
+                                     <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>MP3</label>
+                                                 <input type="file" name="txtmp3" class="form-control"  accept="audio/*" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>MP4</label>
+                                                 <input type="text" name="txtmp4" class="form-control" placeholder="Inserte enlace mp4 youtube" value="<?php echo $rows1[6] ?>" required>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                       
+                                    
 
                                 
                                     <div class="row">

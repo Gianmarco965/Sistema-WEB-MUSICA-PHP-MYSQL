@@ -38,7 +38,7 @@
                         <div class="card">
                             <?php 
                                     $idcancion=$_REQUEST["idcancion"];
-        $sql = "select c.idcancion,a.nombrealbum,c.nombre,c.genero,c.portada from cancion c inner join album a on a.idalbum=c.idalbum where c.idcancion=".$idcancion; //get article id too
+        $sql = "select c.idcancion,a.nombrealbum,c.nombre,c.genero,c.portada,c.mp3,c.mp4 from cancion c inner join album a on a.idalbum=c.idalbum where c.idcancion=".$idcancion; //get article id too
         $results = $db->query($sql);
                                     $rows=$results->fetch_row();                                 
                                         //it makes the query
@@ -77,11 +77,19 @@
                                        
                                     </div>
 
-                                   
-
+                                  
                                     
                                     <div class="row">
-                                       
+                                         <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label>MP4</label>
+                                           <?php  echo "<label class='form-control'>".$rows[6]."</label>"
+                                        ?>
+                                             <iframe width="420"  height="315"
+                                    src="<?php echo $rows[6]; ?>">
+                                    </iframe>
+                                            </div>
+                                        </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Foto</label>
@@ -91,6 +99,22 @@
                                         </div>
                                         
                                     </div>
+                                    
+                                     <div class="row">
+                                       <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>MP3</label>
+                                           <?php  echo "<label class='form-control'>".$rows[5]."</label>"
+                                        ?>
+                                           <audio controls>
+                                              <source  src="http://localhost/audio/<?php echo $rows[5]; ?>" type="audio/mpeg">    
+                                            Your browser does not support the audio element.
+                                            </audio>
+                                            </div>
+                                        </div>
+    
+                                    </div>
+                                    
                        
                                     <a href="editar_cancion.php?idcancion=<?php echo $idcancion ?>" class="btn btn-info btn-fill pull-right">EDITAR CANCION</a>
 
@@ -98,6 +122,7 @@
                                 </form>
                               
                             </div>
+                    
                         </div>
                     </div>
                     <div class="col-md-4">

@@ -59,10 +59,9 @@
                                            echo "<div class='font-icon-list col-lg-3 col-md-3 col-sm-4 col-xs-6 col-xs-6'>";
                                             echo "<div class='font-icon-detail'>";
                                             echo "<img src=http://localhost/".$rows[4]." width='150px'>";
-                                            
-                                            echo "<input type='text' value=".$rows[2].">";
-                                            echo "<input type='text' value='Genero: ".$rows[3]."'>";
-                                             echo "<input type='text' value='Album: ".$rows[1]."'>";
+                                            echo "<input type='text' readonly value=".$rows[2].">";
+                                            echo "<input type='text' readonly value='Genero: ".$rows[3]."'>";
+                                            echo "<input type='text' readonly value='Album: ".$rows[1]."'>";
                                             echo "<a href='ver_cancion.php?idcancion=".$rows[0]."' class='btn help-block btn-fill'>VER CANCION </a>
                                             <button type='button' class='btn help-block'>QUITAR</button>";
                                             echo " </div>";

@@ -43,6 +43,16 @@
               </div>
 
 
+       <script>
+        function onClick()
+           {
+            document.getElementById('id01').style.display='block';
+               
+           }
+           
+           
+           
+    </script>
         <script>
                 <?php include("scriptafter.php"); ?>
                 </script>
