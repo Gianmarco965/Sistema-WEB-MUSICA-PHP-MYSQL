@@ -25,7 +25,7 @@
                 <li>
                 <!--    <a href="user.html">
                     -->
-                           <a href="#">
+                           <a href="usuario.php?idusuario=<?php echo $idusuario; ?>">
                             <i class="pe-7s-user"></i>
                         <p>PERFIL</p>
                     </a>
@@ -61,7 +61,7 @@
 				<li class="active-pro">
                    <!-- <a href="upgrade.html">
                        -->
-                        <a href="#">
+                        <a href="reporte.php">
                          <i class="pe-7s-rocket"></i>
                         <p>REPORTE</p>
                     </a>

@@ -33,78 +33,55 @@
         ?>
 <div class="content">
             <div class="container-fluid">
-                <?php
-                            $idcancion=$_REQUEST["idcancion"];
-                            $micadena="select *from cancion where idcancion=".$idcancion;
-                            $results = $db->query($micadena);
-                            $rows1=$results->fetch_row()
-                ?>
-               
                 <div class="row">
                     <div class="col-md-8">
                         <div class="card">
+                            <?php 
+                                    $idusuario=$_REQUEST["idusuario"];
+        $sql = "SELECT u.idusuario,u.login,u.pass,r.nombrerol,IF(u.activo=1,'ACTIVO','INACTIVO') as activo FROM usuario u inner join rol r on r.idrol=u.idrol where u.idusuario=".$idusuario; //get article id too
+        $results = $db->query($sql);
+                                    $rows=$results->fetch_row()                                 
+                                        //it makes the query
+     ?>
                             <div class="header">
-                                <h4 class="title">EDITAR CANCION</h4>
+                                <h4 class="title">USUARIO - <?php echo $rows[1] ?></h4>
                             </div>
                             <div class="content">
-                                <form method="POST" enctype="multipart/form-data"  action="cancion/actualizar_cancion.php">
+                                <form method="POST" enctype="multipart/form-data"  action="artista/agregar_artista.php">
+                                  
+                                    
+  
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Nombres</label>
-                                                <input type="text" class="form-control" name="txtnombre" placeholder="Escriba los nombres del artista" value="<?php echo $rows1[2]?>" required>
-                                                <input type="hidden" value="<?php echo $idcancion?>" name="idcancion" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Genero</label>
-                                                <input type="text" name="txtgenero" class="form-control" placeholder="Escriba los apellidos del artista" value="<?php echo $rows1[3] ?>" required>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <?php
-                                                $micadena="select *from album";
-                                                $results = $db->query($micadena);
-                                                ?>
-                                                <label>Album</label>
-                                                 <select class="form-control" name="cboalbum" id="" required>
-                                                   <?php
-                                                     $seleccionado="";
-                                        while($rows=$results->fetch_row())
-                                        {
-                                            if ($rows[0]==$rows1[1])
-                                            {
-                                                $seleccionado="selected";
-                                            }
-                                            echo  "<option ".$seleccionado." value='".$rows[0]."'>".$rows[1]."</option>";
-                                            $seleccionado="";        
-                                        }
+                                                <label>USUARIO</label>
+                                          <?php  echo "<label class='form-control'>".$rows[1]."</label>"
                                         ?>
-                                                </select>
-                                              
+                                               
                                             </div>
                                         </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>ROL</label>
+                                                 <?php  echo "<label class='form-control'>".$rows[3]."</label>"
+                                        ?>
+                                            </div>
+                                        </div>
+                                          <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label>ESTADO</label>
+                                                 <?php  echo "<label class='form-control'>".$rows[4]."</label>"
+                                        ?>
+                                            </div>
+                                        </div>
+                                       
                                     </div>
 
-                                
-                                    <div class="row">
-                                       
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Foto</label>
-                                                <input type="file"  name="txtfoto" class="form-control" accept="image/*" required >
-                                            </div>
-                                        </div>
-                                    </div>
-                       
-                                    <button type="submit" class="btn btn-info btn-fill pull-right">GUARDAR CANCION</button>
+                                    <a href="editar_usuario.php?idusuario=<?php echo $idusuario ?>" class="btn btn-info btn-fill pull-right">EDITAR USUARIO</a>
+                                     <a href="cancion_album.php?idalbum=<?php echo $idusuario ?>" class="btn btn-fill">DESACTIVAR USUARIO</a>
                                     <div class="clearfix"></div>
                                 </form>
+                              
                             </div>
                         </div>
                     </div>
@@ -133,8 +110,6 @@
                 </div>
             </div>
         </div>
-
-        
         <?php
    include('footer.php');
 ?>
