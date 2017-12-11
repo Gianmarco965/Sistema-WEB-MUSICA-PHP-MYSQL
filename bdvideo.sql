@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-12-2017 a las 23:28:44
+-- Tiempo de generación: 11-12-2017 a las 20:22:58
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -41,7 +41,8 @@ CREATE TABLE `album` (
 --
 
 INSERT INTO `album` (`idalbum`, `nombrealbum`, `anio`, `valor`, `iddisquera`, `idartista`, `portada`) VALUES
-(1, 'ALBUM DARK FEST 2017', '2010', 50, 1, 1, 'img/compositor.jpg');
+(1, 'ALBUM DARK FEST 2017', '2010', 50, 1, 1, 'img/compact-disc.png'),
+(2, 'ELADMIN DVD', '2014', 2500, 1, 8, 'img/compositor.jpg');
 
 -- --------------------------------------------------------
 
@@ -63,7 +64,7 @@ CREATE TABLE `artista` (
 --
 
 INSERT INTO `artista` (`idartista`, `nombreartista`, `apellidoartista`, `nacionalidad`, `fechanac`, `portada`) VALUES
-(1, 'juan', 'perez', 'peru', '1995-01-05', 'img/artista2.jpg'),
+(1, 'juan', 'per', 'peru', '1995-01-05', 'img/4164474-dark-hd-wallpapers.jpg'),
 (2, 'Julio', 'Melendez', 'Peru', '2017-12-08', 'img/artista2.jpg'),
 (3, 'Julio', 'Garcia', 'Peru', '2009-02-04', 'img/title-1024x638.png'),
 (4, 'Julio', 'Perez', 'Peru', '2012-02-02', 'img/artistaxd.png'),
@@ -71,7 +72,10 @@ INSERT INTO `artista` (`idartista`, `nombreartista`, `apellidoartista`, `naciona
 (6, 'Julio', 'Chavez', 'Peru', '2017-12-07', 'img/artista2.jpg'),
 (7, 'Julio', 'xD', 'Peru', '1990-12-04', 'img/artistaxd.png'),
 (8, 'Julio', 'adad', 'Peru', '1995-03-02', 'img/phone-1814604_1920.jpg'),
-(9, 'artistaxd', 'artistaxd', 'Peru', '2017-12-04', 'img/title-1024x638.png');
+(9, 'artistaxd', 'artistaxd', 'Peru', '2017-12-04', 'img/title-1024x638.png'),
+(10, 'JuanEl', 'JuanEl', 'Peru', '2017-12-04', 'img/compositor.jpg'),
+(11, 'ELADMIN', 'ELADMIN', 'xDPERU', '2017-12-07', 'img/compositor.jpg'),
+(12, 'MIALBUM', 'fgfdg', 'peru', '2017-12-10', 'img/picture.png');
 
 -- --------------------------------------------------------
 
@@ -83,8 +87,19 @@ CREATE TABLE `cancion` (
   `idcancion` int(11) NOT NULL,
   `idalbum` int(11) NOT NULL,
   `nombre` varchar(50) NOT NULL,
-  `genero` varchar(20) NOT NULL
+  `genero` varchar(20) NOT NULL,
+  `portada` varchar(200) NOT NULL,
+  `mp3` varchar(200) NOT NULL,
+  `mp4` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `cancion`
+--
+
+INSERT INTO `cancion` (`idcancion`, `idalbum`, `nombre`, `genero`, `portada`, `mp3`, `mp4`) VALUES
+(1, 2, 'DARK SONG 1', 'ROCK', 'img/music-player.png', 'Breaking Benjamin - Blow Me Away (Lyrics).mp3', 'https://www.youtube.com/embed?v=UuCq8mtK8J4&list=RDSgp0WDMH88g&index=2'),
+(2, 1, 'DARK SONG 2', 'ROCK', 'img/music-player.png', 'Breaking Benjamin - Blow Me Away (Lyrics).mp3', 'https://www.youtube.com/embed/b4Bj7Zb-YD4');
 
 -- --------------------------------------------------------
 
@@ -124,7 +139,8 @@ CREATE TABLE `evento` (
 --
 
 INSERT INTO `evento` (`idevento`, `nomevento`, `fechaevento`, `estadoevento`, `portada`, `idartista`) VALUES
-(1, 'EVENTO MUSIC FEST 2017', '2017-12-31', 1, 'img/wallmusic.jpg', 1);
+(1, 'EVENTO MUSIC FEST 2017', '2017-12-31', 1, 'img/wallmusic.jpg', 1),
+(2, 'EVENTO FIN DE AÃ‘O 2018', '2017-12-31', 1, 'img/programacion.jpg', 11);
 
 -- --------------------------------------------------------
 
@@ -163,7 +179,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`idusuario`, `login`, `pass`, `idrol`, `activo`) VALUES
-(1, 'eladmin', 'eladmin123456', 1, 1);
+(1, 'ELADMINXD', 'eladmin123456', 1, 0);
 
 --
 -- Índices para tablas volcadas
@@ -224,17 +240,17 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `album`
 --
 ALTER TABLE `album`
-  MODIFY `idalbum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idalbum` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `artista`
 --
 ALTER TABLE `artista`
-  MODIFY `idartista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idartista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `cancion`
 --
 ALTER TABLE `cancion`
-  MODIFY `idcancion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idcancion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `disquera`
 --
@@ -244,7 +260,7 @@ ALTER TABLE `disquera`
 -- AUTO_INCREMENT de la tabla `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `idevento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idevento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `rol`
 --
