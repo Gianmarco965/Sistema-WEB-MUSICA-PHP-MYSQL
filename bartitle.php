@@ -4,6 +4,6 @@
             <h1>Bienvenido</h1>
           </div>
           <div class="w3-container">
-          <h2>Colecciones Destacadas</h2>
+          <h2>ALBUMS Destacados</h2>
           </div>
           </div>

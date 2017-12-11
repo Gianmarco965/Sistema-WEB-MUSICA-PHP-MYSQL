@@ -77,6 +77,16 @@
                                             
                                             </div>
                                             
+                                            
+                                        <div class='font-icon-list col-lg-3 col-md-3 col-sm-4 col-xs-6 col-xs-6'>
+                                        
+                                            <div class="font-icon-detail"><i class="pe-7s-graph2"></i>
+                                                 <input type="text" readonly >
+                                                  <button onclick="reporteEventos()"  class='btn  help-fill btn-fill'>REPORTE EVENTOS </button>
+                                            </div>
+
+                                        </div>  
+                                            
                                         
                                
                                 </div>
@@ -121,6 +131,24 @@
             error: function (data){console.log('error'); }
             });  
         }
+       
+       function reporteEventos()
+       {
+          $.ajax({
+              
+        type: "GET",
+        contentType: "application/json; charset=utf-8",
+        url: "webservice/evento.php",
+        dataType: "json",
+        data: "",
+        success: function (data){ 
+            console.log(data);
+            downloadEvento(data); 
+        },
+            error: function (data){console.log('error'); }
+            });  
+        }
+       
        
        function reporteArtista()
        {
@@ -229,7 +257,54 @@
 
             doc.save('reporte_artista.pdf');
            
-       }                 
+       }    
+       
+           function downloadEvento(data)
+       {
+           var doc = new jsPDF();
+           doc.setFillColor(255,0,0);
+           doc.rect(10,10,190,10,'F');
+           
+           
+            doc.setFontSize(8);
+           doc.setTextColor(255,255,255);
+                    doc.text("ID",12, 15);
+                    doc.text("NOMBRE",16, 15);
+                    doc.text("FECHA",70, 15);
+                    doc.text("ESTADO",97, 15);
+                    doc.text("ARTISTA",110, 15);
+                   
+           
+           
+           let contadorz=1;
+           let varz=0;
+           let multi=0;
+           for (var x=1;x<=data.length;x++)
+               {
+                   
+                    multi=(10*(contadorz+varz));
+                   
+
+                    doc.setTextColor(0,0,0);
+                    doc.text(data[x-1].idevento.toString(),10, 15+multi);
+                    doc.text(data[x-1].nomevento.toString(),16, 15+multi);
+                    doc.text(data[x-1].fechaevento.toString(),70, 15+multi);
+                    doc.text(data[x-1].estado.toString(),97, 15+multi);
+                    doc.text(data[x-1].artista.toString(),110, 15+multi);
+                   
+                   
+                   varz++;
+                   
+
+               }
+           
+           
+
+            doc.save('reporte_evento.pdf');
+           
+       }    
+       
+       
         
     
     </script>

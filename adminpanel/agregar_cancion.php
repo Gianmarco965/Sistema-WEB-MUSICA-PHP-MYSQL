@@ -76,8 +76,24 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                
+                                    
+                                     <div class="row">
+                                       
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>MP3</label>
+                                                <input type="file"  name="txtmp3" class="form-control" accept="audio/*" required >
+                                            </div>
+                                        </div>
+                                          <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>MP4</label>
+                                                <input type="text"  name="txtmp4" class="form-control"  required >
+                                            </div>
+                                        </div>
+                                 
+                                    </div>
+                                    
                                     <div class="row">
                                        
                                         <div class="col-md-4">
