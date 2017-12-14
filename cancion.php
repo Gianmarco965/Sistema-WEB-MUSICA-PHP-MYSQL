@@ -13,14 +13,14 @@ $sql1="select *from album where idalbum=".$idalbum;
        
          <div  style="margin-left:0%">
           <div class="w3-container w3-red">
-            <h1>Bienvenido</h1>
+            <h1>CANCIONES</h1>
           </div>
           <div class="w3-container">
           <h2>MUSICAS ALBUM - <?php echo $rows1[1]; ?> </h2>
           </div>
           </div>
        
-        <div class="w3-section w3-white w3-container">     
+        <div class="w3-section w3-white w3-container">         
                  <?php
                                         while($rows=$results->fetch_row())
                                         {
